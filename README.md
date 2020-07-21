@@ -26,7 +26,7 @@ Chọn **Blank** -> **Next**:
 Di con trỏ chuột tới đầu dòng code mình muốn biên dịch tới, sẽ xuất hiện nút Run (Play), click chuột để biên dịch code (hoặc có thể click nút Execute/Stop ngay góc dưới bên trái để biên dịch):
 ![Biên dịch code](/images/playground4.jpg "Biên dịch code")
 
-Sau khi biên dịch xong, panal bên phải sẽ hiển thị giá trị, kết quả từng dòng code (đây là điểm hay nhất của Playground). Panel phía dưới là màn hình console, tại đây hàm `print("Hello, world!")` sẽ in ra chuỗi "Hello, world".
+Sau khi biên dịch xong, panel bên phải sẽ hiển thị giá trị, kết quả từng dòng code (đây là điểm hay nhất của Playground). Panel phía dưới là màn hình console, tại đây hàm `print("Hello, world!")` sẽ in ra chuỗi "Hello, world".
 ![Xem kết quả](/images/playground5.jpg "Xem kết quả")
 
 ## 1. Các khái niệm cơ bản (The Basics)
@@ -44,7 +44,7 @@ let a = 1, b = 2
 ```
 
 ### 1.2. Đặt tên biến, hằng
-Giống như C, Java,... Swift sử các kí tự chữ (a-zA-Z), số (0-9) và dấu gạch dưới (_) để đặt tên, tên không được bắt đầu bằng số. VD: `x`, `num1`, `_member`, `__sum`, `_` đều là tên hợp lệ.
+Giống như C, Java,... Swift sử dụng các kí tự chữ (a-zA-Z), số (0-9) và dấu gạch dưới (_) để đặt tên, tên không được bắt đầu bằng số. VD: `x`, `num1`, `_member`, `__sum`, `_` đều là tên hợp lệ.
 
 Ngoài ra Swift còn cho phép sử dụng các kí tự Unicode để đặt tên (tuy nhiên trên thực tế ít dùng):
 ```swift
@@ -95,7 +95,7 @@ UInt32.max  // 4294967295
 ```
 
 #### Kiểu Int
-Swift cung cấp thêm kiểu số nguyên thông dụng và thường dùng hơn là `Int`, kiểu này có kích thước phục thuộc vào nề tảng hệ điều hành thực thi là 32-bit hay 64-bit.
+Swift cung cấp thêm kiểu số nguyên thông dụng hơn - kiểu `Int`, kiểu này có kích thước phục thuộc vào nề tảng hệ điều hành thực thi là 32-bit hay 64-bit.
 * Trên nền tảng 32-bit, `Int` tương đương với `Int32`
 * Trên nền tảng 64-bit, `Int` tương đương với `Int64`
 
@@ -117,7 +117,7 @@ y = 5.0
 var welcome: String
 welcome = "Xin chào"
 ```
-`x` sẽ có kiểu dữ liệu là Int, `y` có kiểu dữ liệu Float, `welcome` có kiểu dữ liệu String.
+`x` sẽ có kiểu dữ liệu là `Int`, `y` có kiểu dữ liệu `Float`, `welcome` có kiểu dữ liệu `String`.
 
 Nếu không chỉ rõ kiểu dữ liệu, trình biên dịch sẽ ngầm định kiểu dữ liệu:
 ```swift
@@ -131,7 +131,7 @@ var count: Int = 3
 ```
 
 ### 1.9. Biểu diễn số
-Các số nguyên được biểu diễn dưới các dạng:
+**Các số nguyên** được biểu diễn dưới các dạng:
 * Hệ cơ số 10 - thập phân (decimal), không có tiền tố (prefix)
 * Hệ cơ số 2 - nhị phân (binary), bắt đầu bằng `0b`
 * Hệ cơ số 8 - bát phân (octal), bắt đầu bằng `0o`
@@ -144,9 +144,9 @@ let binaryInteger = 0b10001       // số 17 ở hệ nhị phân
 let octalInteger = 0o21           // số 17 ở hệ bát phân
 let hexadecimalInteger = 0x11     // số 17 ở hệ thập lục phân
 ```
-Hệ thập lục phân thường được sử dụng để khởi tạo mã màu trong lập trình.
+Số nguyên hệ thập lục phân thường được sử dụng để khởi tạo mã màu trong lập trình.
 
-Các số thực được biểu diễn dưới dạng thập phân (decimal) hoặc thập lục phân (hexadecimal). Số thực dạng thập phân có thể biểu diễn ở dạng số mũ (exponent), sử dụng `E` hoa hoặc `e` thường. Ví dụ:
+**Các số thực** được biểu diễn dưới dạng thập phân (decimal) hoặc thập lục phân (hexadecimal). Số thực dạng thập phân có thể biểu diễn ở dạng số mũ (exponent), sử dụng `E` hoa hoặc `e` thường. Ví dụ:
 * 1.25e2 (nghĩa là 1.25 x 10 ^ 2 = 125.0)
 * 1.25e-2 (nghĩa là 1.25 x 10 ^ -2 = 0.0125)
 
@@ -164,25 +164,28 @@ let hexadecimalDouble = 0xC.3p0
 Khi biểu diễn những con số quá dài, chúng ta có thể sử dụng dấu gạch dưới (`_`) để ngăn cách các hàng đơn vị cho dễ nhìn:
 ```swift
 let soNguyen = 1_234_567
-let soThuc =. 1_234_567.890_1
+let soThuc = 1_234_567.890_1
 ```
 
 ### 1.10. Chuyển đổi số (ép kiểu)
 #### Chuyển đổi giữa các số nguyên
-Để tính toán giữa các kiểu dữ liệu số khác nhau, chúng ta phải chuyển đổi về cùng 1 kiểu. Ở ví dụ dưới, ta ép kiểu của `mot` từ `UInt8` thành `UInt16` để thực hiện phép cộng:
+Để tính toán giữa các kiểu dữ liệu số khác nhau, chúng ta phải chuyển đổi về cùng 1 kiểu.
 ```swift
 let motNghin: UInt16 = 1_000
 let mot: UInt8 = 1
 let motNghinLeMot = motNghin + UInt16(mot)
 ```
-Tất cả các kiểu dữ liệu số đều có thể chuyển đổi qua lại cho nhau. Để ép kiểu thành công thì số được ép kiểu phải thuộc miền giá trị của kiểu dữ liệu. Ở ví dụ dưới, -10 không thuộc miền giá trị của `UInt8` (từ 0 đến 255) nên ép kiểu thất bại:
+Ở ví dụ trên, ta ép kiểu của `mot` từ `UInt8` thành `UInt16` để thực hiện phép cộng.
+
+Tất cả các kiểu dữ liệu số đều có thể chuyển đổi qua lại với nhau. Tuy nhiên để ép kiểu thành công thì số được ép kiểu phải thuộc miền giá trị của kiểu dữ liệu.
 ```swift
 let soNguyen1: Int8 = -10
 let soNguyen2: UInt8 = UInt8(soNguyen1) // biên dịch báo lỗi
 ```
+Ở ví dụ trên, -10 không thuộc miền giá trị của `UInt8` (từ 0 đến 255) nên ép kiểu thất bại.
 
 #### Chuyển đổi giữa số nguyên và số thực
-Hoàn toàn tương tự như trên khi ép kiểu giữa các số thực, hoặc ép kiểu từ số nguyên sang số thực:
+Khi ép kiểu từ số thực -> số thực, hoặc từ số nguyên -> số thực thì hoàn toàn tương tự như trên:
 ```swift
 let phanNguyen = 3
 let phanThuc = 0.14
@@ -205,9 +208,9 @@ Swift cung cấp kiểu `Bool` với 2 giá trị `true` và `false`. Giống nh
 ```swift
 var completed = true
 if completed {
-print("Đã hoàn thành")
+    print("Đã hoàn thành")
 } else {
-print("Chưa hoàn thành")
+    print("Chưa hoàn thành")
 }
 ```
 Không giống với `C` hay `Java`, giá trị `true` và `false` không tương đương với 1 và 0. Đoạn lệnh sau sẽ báo lỗi:
@@ -215,5 +218,119 @@ Không giống với `C` hay `Java`, giá trị `true` và `false` không tươn
 let i = 1
 if i { // báo lỗi không thể ép kiểu Int thành Bool
 
+}
+```
+
+### 1.13. Tuple
+Tuple nhóm nhiều giá trị (có thể khác kiểu dữ liệu) thành một.
+
+Ví dụ, `(404, "Not Found")` là 1 tuple mô tả mã trạng thái HTTP.
+```swift
+let http404Error = (404, "Not Found")
+```
+`http404Error` là 1 tuple, có kiểu dữ liệu là `(Int, String)`. Câu lệnh trên tương đương với:
+```swift
+let http404Error: (Int, String) = (404, "Not Found")
+```
+Ta có các kiểu tuple khác như `(Int, Int, Int)`, hoặc `(Bool, String)`, hoặc bất cứ cách nhóm kiểu dữ liệu nào...
+
+Để truy cập các giá trị của tuple:
+```swift
+let (code, message) = http404Error
+print("code: \(code)")
+print("message: \(message)")
+```
+Nếu chỉ muốn lấy ra một giá trị:
+```swift
+let (onlyCode, _) = http404Error
+print("code: \(onlyCode)")
+```
+Có thể lấy trực tiếp giá trị của tuple thông qua index tương ứng bắt đầu từ 0:
+```swift
+print("code: \(http404Error.0)")
+print("message: \(http404Error.1)")
+```
+
+Ta cũng có thể đặt tên các thành phần của tuple:
+```swift
+let http200Status = (statusCode: 200, description: "OK")
+//let http200Status: (statusCode: Int, description: String) = (statusCode: 200, description: "OK")
+//let http200Status: (statusCode: Int, description: String) = (200, "OK")
+```
+Khi đó ta sẽ có thêm cách truy cập giá trị của tuple như sau:
+```swift
+print("code: \(http200Status.statusCode)")
+print("message: \(http200Status.description)")
+```
+Tuple là một khái niệm mới so với các ngôn ngữ khác, được dùng thường xuyên trong lập trình Swift.
+
+### 1.14. Optional
+Optional là 1 khái niệm quan trọng và được dùng thường xuyên trong Swift. Kiểu optional sẽ có 2 khả năng, một là chứa giá trị, hai là không có gì. Bằng cách thêm dấu `?` theo sau kiểu dữ liệu thông thường sẽ được kiểu optional.
+
+Ví dụ, khi ép kiểu từ `String` sang `Int`:
+```swift
+let numberString = "123"
+let convertedNumber = Int(numberString)
+print(convertedNumber)  // Optional(123)
+```
+Lúc này `convertedNumber` sẽ có kiểu dữ liệu là `Int?`, có giá trị là 123. Nếu `numberString` = `"123a"`, ép kiểu thất bại, `convertedNumber` sẽ có giá trị là `nil` (hay không gì cả).
+
+#### 1.14.1. Nil
+Để đặt 1 biến optional về trạng thái không có giá trị, ta gán cho nó giá trị đặc biệt `nil`.
+```swift
+var serverCode: Int? = 404
+// serverCode chứa giá trị kiểu Int là 404
+serverCode = nil
+// serverCode bây giờ không chứa gì cả
+```
+Nếu khai báo 1 biến kiểu optional mà không gán giá trị mặc định, thì tự động gán giá trị `nil` cho biến đó:
+```swift
+var answer: String?
+// answer được tự động đặt giá trị nil
+```
+
+#### 1.14.2. Câu lệnh `If` và Forced-Unwrapping
+Dùng `if` để kiểm tra xem biến, hằng optional có chứa giá trị không:
+```swift
+if convertedNumber != nil {
+    print("convertedNumber có chứa giá trị kiểu Int")
+}
+```
+Khi biết chắc chắn biến, hằng kiểu optional đã có giá trị (khác `nil`), chúng ta có thể truy cập vào giá trị đó bằng cách thêm dấu `!` vào ngay sau biến, hằng đó:
+```swift
+if convertedNumber != nil {
+    print("giá trị của convertedNumber là: \(convertedNumber!)")
+}
+```
+
+#### 1.14.3. Optional Binding
+```swift
+if let number = convertedNumber {
+    print("convertedNumber có chứa giá trị kiểu Int: \(number)")
+} else {
+    print("convertedNumber không chứa giá trị")
+}
+if let number = Int(numberString) {
+    print("numberString có thể chuyển đổi thành số: \(number)")
+} else {
+    print("numberString không thể chuyển đổi thành số")
+}
+```
+Cú pháp này được sử dụng thường xuyên khi xử lý với kiểu optional. Lưu ý rằng hằng `number` chỉ sử dụng được trong phạm vi dấu ngoặc `{` `}`. Ngoài ra, có thể thay từ khoá `let` bằng `var`, khi đó `number` trở thành biến.
+
+Các optional binding lồng nhau:
+```swift
+if let num1 = Int("4") {
+    if let num2 = Int("20") {
+        if num1 < num2 {
+            print("\(num1) < \(num2)")
+        }
+    }
+}
+```
+có thể gộp lại trong 1 câu lệnh `if`:
+```swift
+if let num1 = Int("4"), let num2 = Int("20"), num1 < num2 {
+    print("\(num1) < \(num2)")
 }
 ```

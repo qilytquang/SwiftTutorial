@@ -85,3 +85,64 @@ if i { // báo lỗi không thể ép kiểu Int thành Bool
     
 }
 */
+
+let http404Error = (404, "Not Found")
+//let http404Error: (Int, String) = (404, "Not Found")
+let (code, message) = http404Error
+print("code: \(code)")
+print("message: \(message)")
+
+let (onlyCode, _) = http404Error
+print("code: \(onlyCode)")
+
+print("code: \(http404Error.0)")
+print("message: \(http404Error.1)")
+
+let http200Status = (statusCode: 200, description: "OK")
+//let http200Status: (statusCode: Int, description: String) = (statusCode: 200, description: "OK")
+//let http200Status: (statusCode: Int, description: String) = (200, "OK")
+
+print("code: \(http200Status.statusCode)")
+print("message: \(http200Status.description)")
+
+let numberString = "123"
+let convertedNumber = Int(numberString)
+print(convertedNumber)  // Optional(123)
+
+var serverCode: Int? = 404
+// serverCode chứa giá trị kiểu Int là 404
+serverCode = nil
+// serverCode bây giờ không chứa gì cả
+
+var answer: String?
+// answer được tự động đặt giá trị nil
+
+if convertedNumber != nil {
+    print("convertedNumber có chứa giá trị kiểu Int")
+}
+
+if convertedNumber != nil {
+    print("giá trị của convertedNumber là: \(convertedNumber!)")
+}
+
+if let number = convertedNumber {
+    print("convertedNumber có chứa giá trị kiểu Int: \(number)")
+} else {
+    print("convertedNumber không chứa giá trị")
+}
+if let number = Int(numberString) {
+    print("numberString có thể chuyển đổi thành số: \(number)")
+} else {
+    print("numberString không thể chuyển đổi thành số")
+}
+
+if let num1 = Int("4") {
+    if let num2 = Int("20") {
+        if num1 < num2 {
+            print("\(num1) < \(num2)")
+        }
+    }
+}
+if let num1 = Int("4"), let num2 = Int("20"), num1 < num2 {
+    print("\(num1) < \(num2)")
+}
