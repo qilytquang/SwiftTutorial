@@ -265,7 +265,7 @@ print("message: \(http200Status.description)")
 Tuple là một khái niệm mới so với các ngôn ngữ khác, được dùng thường xuyên trong lập trình Swift.
 
 ### 1.14. Optional
-Optional là 1 khái niệm quan trọng và được dùng thường xuyên trong Swift. Kiểu optional sẽ có 2 khả năng, một là chứa giá trị, hai là không có gì. Bằng cách thêm dấu `?` theo sau kiểu dữ liệu thông thường sẽ được kiểu optional.
+Optional là 1 khái niệm quan trọng và được dùng thường xuyên trong Swift. Kiểu optional sẽ có 2 khả năng, một là chứa giá trị, hai là không có gì. Bằng cách thêm dấu `?` theo sau kiểu dữ liệu thông thường, ta sẽ được kiểu optional.
 
 Ví dụ, khi ép kiểu từ `String` sang `Int`:
 ```swift
@@ -302,6 +302,7 @@ if convertedNumber != nil {
     print("giá trị của convertedNumber là: \(convertedNumber!)")
 }
 ```
+Ta nói `convertedNumber!` là `Unwrapped` của `convertedNumber`. Lưu ý ở đây `convertedNumber` có kiểu dữ liệu là `Int?`, còn `convertedNumber!` có kiểu dữ liệu là `Int`.
 
 #### 1.14.3. Optional Binding
 ```swift
@@ -316,7 +317,7 @@ if let number = Int(numberString) {
     print("numberString không thể chuyển đổi thành số")
 }
 ```
-Cú pháp này được sử dụng thường xuyên khi xử lý với kiểu optional. Lưu ý rằng hằng `number` chỉ sử dụng được trong phạm vi dấu ngoặc `{` `}`. Ngoài ra, có thể thay từ khoá `let` bằng `var`, khi đó `number` trở thành biến.
+Cú pháp `if let...` này được sử dụng thường xuyên khi xử lý với kiểu optional. Lưu ý rằng hằng `number` có kiểu dữ liệu `Int`, và chỉ sử dụng được trong phạm vi dấu ngoặc `{` `}` ngay sau nó. Ngoài ra, có thể thay từ khoá `let` bằng `var`, khi đó `number` trở thành biến.
 
 Các optional binding lồng nhau:
 ```swift
@@ -334,3 +335,31 @@ if let num1 = Int("4"), let num2 = Int("20"), num1 < num2 {
     print("\(num1) < \(num2)")
 }
 ```
+
+#### 1.14.4. Implicitly Unwrapped Optionals
+Bằng cách thêm dấu `!` theo sau kiểu dữ liệu thông thường, ta sẽ được kiểu *Implicitly Unwrapped Optional*.
+```swift
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // Bắt buộc phải có dấu chấm than (!)
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // Không cần dấu chấm than (!)
+```
+
+Trong trường hợp gán `assumedString` (một *Implicitly Unwrapped Optional*) cho một biến, hằng không chỉ định kiểu dữ liệu, thì biến, hằng đó sẽ có kiểu optional:
+```swift
+let optionalString = assumedString
+```
+Hằng `optionalString` có kiểu `String?`.
+
+Chúng ta có thể kiểm tra giá trị của *Implicitly Unwrapped Optional* bằng cách tương tự như kiểu *Optional*.
+```swift
+if assumedString != nil {
+    print(assumedString!)
+}
+
+if let definiteString = assumedString {
+    print(definiteString)
+}
+```
+Kiểu *Implicitly Unwrapped Optional* thường dùng trong trường hợp không thể khởi thuộc tính nào đó của `class`. Lưu ý không nên dùng kiểu này cho một biến, hằng nào đó mà nó có thể bằng `nil`.

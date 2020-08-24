@@ -146,3 +146,19 @@ if let num1 = Int("4") {
 if let num1 = Int("4"), let num2 = Int("20"), num1 < num2 {
     print("\(num1) < \(num2)")
 }
+
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // Bắt buộc phải có dấu chấm than (!)
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // Không cần dấu chấm than (!)
+
+let optionalString = assumedString
+
+if assumedString != nil {
+    print(assumedString!)
+}
+
+if let definiteString = assumedString {
+    print(definiteString)
+}
