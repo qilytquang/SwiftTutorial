@@ -1,6 +1,3 @@
-
-//print("Hello, world!")
-
 let myConstant = 3.14
 var myVariable = 2
 myVariable = 5
@@ -147,10 +144,10 @@ if let num1 = Int("4"), let num2 = Int("20"), num1 < num2 {
     print("\(num1) < \(num2)")
 }
 
-let possibleString: String? = "An optional string."
+let possibleString: String? = "optional"
 let forcedString: String = possibleString! // Bắt buộc phải có dấu chấm than (!)
 
-let assumedString: String! = "An implicitly unwrapped optional string."
+let assumedString: String! = "implicitly unwrapped optional"
 let implicitString: String = assumedString // Không cần dấu chấm than (!)
 
 let optionalString = assumedString
